@@ -1,10 +1,9 @@
 class Logger {
 	render () {
-		let html = "";
-		for (const message of Object.values(this._messages)) {
-			html += `<li>${message}</li>`;
-		}
-		this._list.innerHTML = html;
+		/**
+		 * Makes <li>a</li> list.
+		**/
+		this._list.innerHTML = `<li>${this._messages.join("</li><li>")}</li>`;
 	}
 
 	/**
@@ -16,7 +15,7 @@ class Logger {
 		}
 
 		if (config == null || config.constructor != Object) {
-			console.warn("Config is not an object.");
+			arguments.length >= 2 && console.warn("Config is not an object.");
 			config = {};
 		}
 
